@@ -1,0 +1,15 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "virtualMachines_nixml_adminUsername": {
+            "value": null
+        },
+        "virtualMachines_nixml_name": {
+            "value": null
+        },
+        "sshkey": {
+            "value": "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCyt7YfUT+2PslSL3n+uXKsezDkBn2cfojfGK7Y3QX4CWxFVOLso3dsnyNEihKzvgXwjxpdfaD4iVbtf49k75ECmgaKIMjHZGlM+fWuXfeA91Wnb3pF0UHzXEKoB77eoVXiMZY06b6zl11HuK5QG/Pk1pXETyuV1Yiltf+ihSnXSh9Zr9Qj7feu9oLkczF8NuSQQC0SHA8jd8oaxgovlRHGFdnUGhPV/DmOHeSX8K26HvKEWT0huWqARxDRV+cZPAnZKG7iZ2DdKkjilZGwfCEFfj70fbbhebUwgkrRQUA6896ZCaulaX6OucEbKR2EQiHSaM0sDHbMphqNfDYWTrBv"
+        }
+    }
+}

@@ -1,0 +1,40 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "virtualMachines_nixml_name": {
+            "type": "String"
+        },
+        "virtualMachines_nixml_adminUsername": {
+            "type": "String"
+        },
+        "sshKey": {
+            "type": "String"
+        }
+    },
+    "variables": {
+        "apiVersion": "2015-06-15",
+        "autoUpgrade": true,
+        "vmLocation": "japaneast",
+        "extensionType": "VMAccessForLinux",
+        "extensionPublisher": "Microsoft.OSTCExtensions",
+        "extensionTypeHandlerVersion": "1.4"
+    },
+    "resources": [{
+        "type": "Microsoft.Compute/virtualMachines/extensions",
+        "name": "[concat(parameters('virtualMachines_nixml_name'),'/enablevmaccess')]",
+        "apiVersion": "[variables('apiVersion')]",
+        "location": "[variables('vmLocation')]",
+        "properties": {
+            "publisher": "[variables('extensionPublisher')]",
+            "type": "[variables('extensionType')]",
+            "typeHandlerVersion": "[variables('extensionTypeHandlerVersion')]",
+            "settings": {},
+            "protectedSettings": {
+                "username": "[parameters('virtualMachines_nixml_adminUsername')]",
+                "ssh_key": "[parameters('sshKey')]"
+            },
+            "autoUpgradeMinorVersion": "[variables('autoUpgrade')]"
+        }
+    }]
+}

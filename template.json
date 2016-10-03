@@ -1,0 +1,233 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "virtualMachines_nixml_adminUsername": {
+            "defaultValue": null,
+            "type": "SecureString"
+        },
+        "virtualMachines_nixml_adminPassword": {
+            "defaultValue": null,
+            "type": "SecureString"
+        },
+        "virtualMachines_nixml_name": {
+            "defaultValue": "nixml",
+            "type": "String"
+        },
+        "networkInterfaces_nixml_name": {
+            "defaultValue": "nixml17",
+            "type": "String"
+        },
+        "networkSecurityGroups_nixml_nsg_name": {
+            "defaultValue": "nixml02-nsg",
+            "type": "String"
+        },
+        "publicIPAddresses_nixml_ip_name": {
+            "defaultValue": "nixml-ip",
+            "type": "String"
+        },
+        "virtualNetworks_CAAPI_vnet_name": {
+            "defaultValue": "CAAPI-vnet",
+            "type": "String"
+        },
+        "storageAccounts_caapi857_name": {
+            "defaultValue": "caapi857",
+            "type": "String"
+        }
+    },
+    "variables": {},
+    "resources": [{
+        "comments": "Generalized from resource: '/subscriptions/e225d10c-2fce-4a2c-8ab8-fbf0cf28b99e/resourceGroups/CAAPI/providers/Microsoft.Compute/virtualMachines/nixml02'.",
+        "type": "Microsoft.Compute/virtualMachines",
+        "name": "[parameters('virtualMachines_nixml_name')]",
+        "apiVersion": "2015-06-15",
+        "location": "japaneast",
+        "plan": {
+            "name": "linuxdsvm",
+            "product": "linux-data-science-vm",
+            "publisher": "microsoft-ads"
+        },
+        "properties": {
+            "hardwareProfile": {
+                "vmSize": "Standard_D2"
+            },
+            "storageProfile": {
+                "imageReference": {
+                    "publisher": "microsoft-ads",
+                    "offer": "linux-data-science-vm",
+                    "sku": "linuxdsvm",
+                    "version": "latest"
+                },
+                "osDisk": {
+                    "name": "[parameters('virtualMachines_nixml_name')]",
+                    "createOption": "FromImage",
+                    "vhd": {
+                        "uri": "[concat('https', '://', parameters('storageAccounts_caapi857_name'), '.blob.core.windows.net', concat('/vhds/', parameters('virtualMachines_nixml_name'),'20169214024.vhd'))]"
+                    },
+                    "caching": "ReadWrite"
+                },
+                "dataDisks": []
+            },
+            "osProfile": {
+                "computerName": "[parameters('virtualMachines_nixml_name')]",
+                "adminUsername": "[parameters('virtualMachines_nixml_adminUsername')]",
+                "linuxConfiguration": {
+                    "disablePasswordAuthentication": false
+                },
+                "secrets": [],
+                "adminPassword": "[parameters('virtualMachines_nixml_adminPassword')]"
+            },
+            "networkProfile": {
+                "networkInterfaces": [{
+                    "id": "[resourceId('Microsoft.Network/networkInterfaces', parameters('networkInterfaces_nixml_name'))]"
+                }]
+            }
+        },
+        "resources": [],
+        "dependsOn": [
+            "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccounts_caapi857_name'))]",
+            "[resourceId('Microsoft.Network/networkInterfaces', parameters('networkInterfaces_nixml_name'))]"
+        ]
+    }, {
+        "comments": "Generalized from resource: '/subscriptions/e225d10c-2fce-4a2c-8ab8-fbf0cf28b99e/resourceGroups/CAAPI/providers/Microsoft.Network/networkInterfaces/nixml0217'.",
+        "type": "Microsoft.Network/networkInterfaces",
+        "name": "[parameters('networkInterfaces_nixml_name')]",
+        "apiVersion": "2016-03-30",
+        "location": "japaneast",
+        "properties": {
+            "ipConfigurations": [{
+                "name": "ipconfig1",
+                "properties": {
+                    "privateIPAddress": "10.6.0.4",
+                    "privateIPAllocationMethod": "Dynamic",
+                    "publicIPAddress": {
+                        "id": "[resourceId('Microsoft.Network/publicIPAddresses', parameters('publicIPAddresses_nixml_ip_name'))]"
+                    },
+                    "subnet": {
+                        "id": "[concat(resourceId('Microsoft.Network/virtualNetworks', parameters('virtualNetworks_CAAPI_vnet_name')), '/subnets/default')]"
+                    }
+                }
+            }],
+            "dnsSettings": {
+                "dnsServers": []
+            },
+            "enableIPForwarding": false,
+            "networkSecurityGroup": {
+                "id": "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('networkSecurityGroups_nixml_nsg_name'))]"
+            }
+        },
+        "resources": [],
+        "dependsOn": [
+            "[resourceId('Microsoft.Network/publicIPAddresses', parameters('publicIPAddresses_nixml_ip_name'))]",
+            "[resourceId('Microsoft.Network/virtualNetworks', parameters('virtualNetworks_CAAPI_vnet_name'))]",
+            "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('networkSecurityGroups_nixml_nsg_name'))]"
+        ]
+    }, {
+        "comments": "Generalized from resource: '/subscriptions/e225d10c-2fce-4a2c-8ab8-fbf0cf28b99e/resourceGroups/CAAPI/providers/Microsoft.Network/networkSecurityGroups/nixml02-nsg'.",
+        "type": "Microsoft.Network/networkSecurityGroups",
+        "name": "[parameters('networkSecurityGroups_nixml_nsg_name')]",
+        "apiVersion": "2016-03-30",
+        "location": "japaneast",
+        "properties": {
+            "securityRules": [{
+                "name": "Jupyter",
+                "properties": {
+                    "protocol": "TCP",
+                    "sourcePortRange": "*",
+                    "destinationPortRange": "9999",
+                    "sourceAddressPrefix": "*",
+                    "destinationAddressPrefix": "*",
+                    "access": "Allow",
+                    "priority": 1010,
+                    "direction": "Inbound"
+                }
+            }, {
+                "name": "JupyterHub",
+                "properties": {
+                    "protocol": "TCP",
+                    "sourcePortRange": "*",
+                    "destinationPortRange": "8000",
+                    "sourceAddressPrefix": "*",
+                    "destinationAddressPrefix": "*",
+                    "access": "Allow",
+                    "priority": 1020,
+                    "direction": "Inbound"
+                }
+            }, {
+                "name": "default-allow-ssh",
+                "properties": {
+                    "protocol": "TCP",
+                    "sourcePortRange": "*",
+                    "destinationPortRange": "22",
+                    "sourceAddressPrefix": "*",
+                    "destinationAddressPrefix": "*",
+                    "access": "Allow",
+                    "priority": 1030,
+                    "direction": "Inbound"
+                }
+            }, {
+                "name": "default-allow-http",
+                "properties": {
+                    "protocol": "TCP",
+                    "sourcePortRange": "*",
+                    "destinationPortRange": "80",
+                    "sourceAddressPrefix": "*",
+                    "destinationAddressPrefix": "*",
+                    "access": "Allow",
+                    "priority": 1040,
+                    "direction": "Inbound"
+                }
+            }]
+        },
+        "resources": [],
+        "dependsOn": []
+    }, {
+        "comments": "Generalized from resource: '/subscriptions/e225d10c-2fce-4a2c-8ab8-fbf0cf28b99e/resourceGroups/CAAPI/providers/Microsoft.Network/publicIPAddresses/nixml02-ip'.",
+        "type": "Microsoft.Network/publicIPAddresses",
+        "name": "[parameters('publicIPAddresses_nixml_ip_name')]",
+        "apiVersion": "2016-03-30",
+        "location": "japaneast",
+        "properties": {
+            "publicIPAllocationMethod": "Dynamic",
+            "idleTimeoutInMinutes": 4
+        },
+        "resources": [],
+        "dependsOn": []
+    }, {
+        "comments": "Generalized from resource: '/subscriptions/e225d10c-2fce-4a2c-8ab8-fbf0cf28b99e/resourceGroups/CAAPI/providers/Microsoft.Network/virtualNetworks/CAAPI-vnet'.",
+        "type": "Microsoft.Network/virtualNetworks",
+        "name": "[parameters('virtualNetworks_CAAPI_vnet_name')]",
+        "apiVersion": "2016-03-30",
+        "location": "japaneast",
+        "properties": {
+            "addressSpace": {
+                "addressPrefixes": [
+                    "10.6.0.0/16"
+                ]
+            },
+            "subnets": [{
+                "name": "default",
+                "properties": {
+                    "addressPrefix": "10.6.0.0/24"
+                }
+            }]
+        },
+        "resources": [],
+        "dependsOn": []
+    }, {
+        "comments": "Generalized from resource: '/subscriptions/e225d10c-2fce-4a2c-8ab8-fbf0cf28b99e/resourceGroups/caapi/providers/Microsoft.Storage/storageAccounts/caapi857'.",
+        "type": "Microsoft.Storage/storageAccounts",
+        "sku": {
+            "name": "Standard_LRS",
+            "tier": "Standard"
+        },
+        "kind": "Storage",
+        "name": "[parameters('storageAccounts_caapi857_name')]",
+        "apiVersion": "2016-01-01",
+        "location": "japaneast",
+        "tags": {},
+        "properties": {},
+        "resources": [],
+        "dependsOn": []
+    }]
+}

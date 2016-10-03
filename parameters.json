@@ -1,0 +1,30 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "virtualMachines_nixml_adminPassword": {
+            "value": null
+        },
+        "virtualMachines_nixml_adminUsername": {
+            "value": null
+        },
+        "virtualMachines_nixml_name": {
+            "value": null
+        },
+        "networkInterfaces_nixml_name": {
+            "value": null
+        },
+        "networkSecurityGroups_nixml_nsg_name": {
+            "value": "nixml02-nsg"
+        },
+        "publicIPAddresses_nixml_ip_name": {
+            "value": null
+        },
+        "virtualNetworks_CAAPI_vnet_name": {
+            "value": "CAAPI-vnet"
+        },
+        "storageAccounts_caapi857_name": {
+            "value": "caapi857"
+        }
+    }
+}
