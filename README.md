@@ -43,11 +43,11 @@ Below step should be done on VM.
 #### Vagrant
 For RMP system:
 ```shell
-curl -o- https://raw.githubusercontent.com/bartuer/CAAPI_provision/vagrant.yum.sh | bash
+curl -o- https://raw.githubusercontent.com/bartuer/CAAPI_provision/master/vagrant.yum.sh | bash
 ```
 For APT system:
 ```shell
-curl -o- https://raw.githubusercontent.com/bartuer/CAAPI_provision/vagrant.apt.sh | bash
+curl -o- https://raw.githubusercontent.com/bartuer/CAAPI_provision/master/vagrant.apt.sh | bash
 ```
 
 #### Emacs
