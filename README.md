@@ -1,4 +1,4 @@
-# CAAPI_provsion
+# CAAPI_provision
 
 Provision files for Azure data science virtual machine. 
 
@@ -7,7 +7,7 @@ Provision files for Azure data science virtual machine.
 ```shell
 azure login
 ```
-### Create VM
+### Create Azure Data Science VM
 Edit parameters.json before provision the template, fill all null
 parameters before execute below command, it will take about 3 minutes
 to successfully create the VM.
@@ -40,14 +40,72 @@ ssh $machine_name
 ### Provision
 Below step should be done on VM.
 
-#### Vagrant
-For RMP system:
+#### Disable SELinux
+Otherwise local folder sync between docker and host would have
+permission problem.
+
+Check SELinux running or not:
 ```shell
-curl -o- https://raw.githubusercontent.com/bartuer/CAAPI_provsion/master/vagrant.yum.sh | bash
+id -Z
 ```
-For APT system:
+
+This will reboot the machine, after booting, SELinux should be disabled.
 ```shell
-curl -o- https://raw.githubusercontent.com/bartuer/CAAPI_provsion/master/vagrant.apt.sh | bash
+./disable_selinux.sh 
+```
+
+#### Install Docker
+
+At end, a docker daemon will run as service, and a hello world docker
+container will show up.
+
+```shell
+curl -o- https://raw.githubusercontent.com/bartuer/CAAPI_provision/master/docker.sh | bash
+```
+
+#### Install Vagrant
+
+For RMP system:
+
+```shell
+curl -o- https://raw.githubusercontent.com/bartuer/CAAPI_provision/master/vagrant.yum.sh | bash
+```
+
+#### Base Image, with ssh setup and host volume mounted 
+
+Check out https://github.com/bartuer/CAAPI_files/blob/master/README.md
+for volume mount details.
+
+```shell
+curl -o- https://raw.githubusercontent.com/bartuer/CAAPI_files/master/base/create.sh | bash
+```
+
+Access base docker instance.
+```shell
+cd /ml/vms/base && vagrant ssh
+```
+
+#### Tensor Flow Image
+
+```shell
+curl -o- https://raw.githubusercontent.com/bartuer/CAAPI_files/master/tensorflow/create.sh | bash
+```
+
+Access tensor flow docker instance.
+
+```shell
+cd /ml/vms/tensorflow && vagrant ssh
+```
+
+#### Torch Image
+
+```shell
+curl -o- https://raw.githubusercontent.com/bartuer/CAAPI_files/master/torch/create.sh | bash
+```
+Access torch docker instance.
+
+```shell
+cd /ml/vms/torch && vagrant ssh
 ```
 
 #### Emacs
