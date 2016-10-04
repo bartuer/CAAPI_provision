@@ -49,7 +49,8 @@ Check SELinux running or not:
 id -Z
 ```
 
-This will reboot the machine, after booting, SELinux should be disabled.
+This will reboot the machine, after booting, SELinux should be
+disabled. Reboot may take 1~2 minutes.
 ```shell
 ./disable_selinux.sh 
 ```
