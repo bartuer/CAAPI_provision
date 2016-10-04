@@ -11,7 +11,7 @@ azure login
 Edit parameters.json before provision the template, fill all null 
 parameters (total 5) before execute below command, it will take about 3 minutes
 to successfully create the VM. And never check in parameters.json,
-because that way you will check in credential.
+because you are check in credential data.
 
 ```shell
 ./deploy.sh
