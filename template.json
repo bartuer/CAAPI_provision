@@ -188,8 +188,11 @@
         "apiVersion": "2016-03-30",
         "location": "japaneast",
         "properties": {
-            "publicIPAllocationMethod": "Dynamic",
-            "idleTimeoutInMinutes": 4
+            "publicIPAllocationMethod": "Static",
+            "idleTimeoutInMinutes": 4,
+            "dnsSettings": {
+                "domainNameLabel": "[parameters('virtualMachines_nixml_name')]"
+            }
         },
         "resources": [],
         "dependsOn": []
