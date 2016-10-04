@@ -28,11 +28,11 @@ fill automatically when execute below command, it will take about 1 minutes.
 ```shell
 ./sshkey.sh
 ```
-Configure ssh to remember machine IP/name
+Configure ssh to remember machine IP/machine name, it will install NodeJS.
 ```shell
-node ssh_config >> ~/.ssh/config
-cat ~/.ssh/config
+curl -o- https://raw.githubusercontent.com/bartuer/CAAPI_provision/master/ssh_config.sh | bash
 ```
+
 Now you can connect to your machine use public key
 ```
 ssh $machine_name
