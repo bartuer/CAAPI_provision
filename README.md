@@ -50,20 +50,28 @@ Check SELinux running or not:
 id -Z
 ```
 
-This will reboot the machine, after booting, SELinux should be
+VM will reboot after issue below command, after booting, SELinux should be
 disabled. Reboot may take 1~2 minutes.
 ```shell
 curl -o- https://raw.githubusercontent.com/bartuer/CAAPI_provision/master/disable_selinux.sh | bash
+id -Z
 ```
 
 #### Install Docker
 
-At end, a docker daemon will run as service, and a hello world docker
-container will show up.
+At end, a docker daemon will run as service.
 
 ```shell
 curl -o- https://raw.githubusercontent.com/bartuer/CAAPI_provision/master/docker.sh | bash
 ```
+
+Login again
+```shell
+exit
+ssh $machine_name
+docker run --rm hello-world
+```
+A hello world docker container will show up, that means docker install success.
 
 #### Install Vagrant
 
