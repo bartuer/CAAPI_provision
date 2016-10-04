@@ -8,6 +8,7 @@ var address = JSON.parse(exec(`azure network public-ip show CAAPI ${machine_name
 var ip = address.ipAddress;
 var dns_name = address.dnsSettings.fqdn;
 console.log('');
+console.log('');
 console.log(`Host ${machine_name}`);
 console.log(`     Hostname ${ip}`);
 console.log(`     Hostname ${dns_name}`);
