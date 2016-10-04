@@ -86,6 +86,14 @@ Access base docker instance.
 cd /ml/vms/base && vagrant ssh
 ```
 
+After ssh into docker container, Change to root to avoid incompatible
+uid permission problem.
+
+```shell
+sudo su -
+cd /ml/local
+```
+
 #### Tensor Flow Image
 
 ```shell
