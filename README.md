@@ -109,12 +109,12 @@ cd /ml/vms/torch && vagrant ssh
 ```
 
 #### Emacs
-On  CentOS/RedHat RPM package system:
+CentOS/RedHat RPM package system:
 ```shell
 curl -o- https://raw.githubusercontent.com/bartuer/dot-emacs/master/install/linux_yum.sh | bash
 ```
 
-On Ubuntu/Debian APT package system:
+Ubuntu/Debian APT package system:
 ```shell
 curl -o- https://raw.githubusercontent.com/bartuer/dot-emacs/master/install/linux_apt.sh | bash
 ```
