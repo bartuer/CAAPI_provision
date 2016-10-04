@@ -53,7 +53,7 @@ id -Z
 This will reboot the machine, after booting, SELinux should be
 disabled. Reboot may take 1~2 minutes.
 ```shell
-./disable_selinux.sh 
+curl -o- https://raw.githubusercontent.com/bartuer/CAAPI_provision/master/disable_selinux.sh | bash
 ```
 
 #### Install Docker
