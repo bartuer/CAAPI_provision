@@ -34,7 +34,7 @@ Configure ssh to remember machine IP/machine name, it will install NodeJS.
 curl -o- https://raw.githubusercontent.com/bartuer/CAAPI_provision/master/ssh_config.sh | bash
 ```
 
-Now you can connect to your machine use public key
+Now you can connect to your machine use RSA public key
 ```
 ssh $machine_name
 ```
@@ -108,6 +108,21 @@ On Host
 ```shell
 cat /ml/local/file_rw
 echo "" > /ml/local/file_rw
+```
+
+#### Mount Azure File Storage to docker container
+
+Install driver
+```shell
+curl -o- https://raw.githubusercontent.com/bartuer/CAAPI_provision/master/azurefile.sh | bash
+```
+
+Execute below command on local machine, not VM. $machine_name is host
+field of output when configure ssh public key, check it at
+~/.ssh/config.
+
+```shell
+./storagetoken.sh $machine_name
 ```
 #### Tensor Flow Image
 
