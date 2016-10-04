@@ -112,7 +112,7 @@ echo "" > /ml/local/file_rw
 
 #### Mount Azure File Storage to docker container
 
-Install driver
+Install driver for Azure File Storage docker volume.
 ```shell
 curl -o- https://raw.githubusercontent.com/bartuer/CAAPI_provision/master/azurefile.sh | bash
 ```
@@ -124,6 +124,10 @@ field of output when configure ssh public key, check it at
 ```shell
 ./storagetoken.sh $machine_name
 ```
+
+Now 2 Azure File Storage docker volume are created, datavol and
+codevol.
+
 #### Tensor Flow Image
 
 ```shell
