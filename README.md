@@ -8,9 +8,10 @@ Provision files for Azure data science virtual machine.
 azure login
 ```
 ### Create Azure Data Science VM
-Edit parameters.json before provision the template, fill all null
-parameters before execute below command, it will take about 3 minutes
-to successfully create the VM.
+Edit parameters.json before provision the template, fill all null 
+parameters (total 5) before execute below command, it will take about 3 minutes
+to successfully create the VM. And never check in parameters.json,
+because that way you will check in credential.
 
 ```shell
 ./deploy.sh

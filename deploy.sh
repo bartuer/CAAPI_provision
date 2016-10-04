@@ -73,4 +73,4 @@ fi
 echo "Deploy to location: $resourceGroupLocation"
 #Start deployment
 echo "Starting deployment..."
-azure group deployment create --name $deploymentName --resource-group $resourceGroupName --template-file $templateFilePath --parameters-file $parametersFilePath -vv
+azure group deployment create --name $deploymentName --resource-group $resourceGroupName --template-file $templateFilePath --parameters-file $parametersFilePath -v
