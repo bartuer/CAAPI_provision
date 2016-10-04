@@ -54,7 +54,6 @@ VM will reboot after issue below command, after booting, SELinux should be
 disabled. Reboot may take 1~2 minutes.
 ```shell
 curl -o- https://raw.githubusercontent.com/bartuer/CAAPI_provision/master/disable_selinux.sh | bash
-id -Z
 ```
 
 #### Install Docker
@@ -101,8 +100,15 @@ uid permission problem.
 ```shell
 sudo su -
 cd /ml/local
+touch file_rw && chmod g+w file_rw
+echo " Hello " > file_rw
 ```
 
+On Host
+```shell
+cat /ml/local/file_rw
+echo "" > /ml/local/file_rw
+```
 #### Tensor Flow Image
 
 ```shell
