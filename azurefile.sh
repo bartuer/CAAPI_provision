@@ -1,6 +1,6 @@
 #!/bin/bash
 cd /tmp
-curl -L https://github.com/Azure/azurefile-dockervolumedriver/releases/download/latest/azurefile-dockervolumedriver -O
+curl -L http://bartuer.cloudapp.net/azurefile-dockervolumedriver -O
 chmod +x azurefile-dockervolumedriver
 sudo cp azurefile-dockervolumedriver /usr/bin/azurefile-dockervolumedriver
 sudo chmod +x /usr/bin/azurefile-dockervolumedriver
