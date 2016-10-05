@@ -33,10 +33,18 @@ Configure ssh to remember machine IP/machine name, it will install NodeJS.
 ```shell
 curl -o- https://raw.githubusercontent.com/bartuer/CAAPI_provision/master/ssh_config.sh | bash
 ```
-
 Now you can connect to your machine use RSA public key
-```
+```shell
 ssh $machine_name
+```
+Mosh can keep you connect to the VM, but it is optional.
+```shell
+curl -o- https://raw.githubusercontent.com/bartuer/CAAPI_provision/master/mosh.sh | ssh $machine_name 'bash -s'
+```
+
+usage like
+```shell
+mosh $machine_name
 ```
 ### Provision
 Below step should be done on VM.
@@ -164,6 +172,8 @@ cd /ml/vms/torch && vagrant ssh
 ```
 
 #### Emacs
+If you don't use Emacs as your editor/IDE, ignore this.
+
 CentOS/RedHat RPM package system:
 ```shell
 curl -o- https://raw.githubusercontent.com/bartuer/dot-emacs/master/install/linux_yum.sh | bash
