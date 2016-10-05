@@ -109,7 +109,7 @@ Check out https://github.com/bartuer/CAAPI_files/blob/master/README.md
 for volume mount details.
 
 ```shell
-curl -o- https://raw.githubusercontent.com/bartuer/CAAPI_files/master/base/create.sh | bash
+curl -o- https://raw.githubusercontent.com/bartuer/CAAPI_files/master/minimal/create.sh | bash
 ```
 
 Access base docker instance.
@@ -121,7 +121,6 @@ After ssh into docker container, Change to root to avoid incompatible
 uid permission problem.
 
 ```shell
-sudo su -
 cd /ml/local
 touch file_rw && chmod g+w file_rw
 echo " Hello " > file_rw
