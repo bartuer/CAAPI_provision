@@ -41,7 +41,7 @@ BELOW STEP SHOULD BE DONE ON VM.
 
 Mosh can keep you connect to the VM, but it is optional.
 ```shell
-curl -o- https://raw.githubusercontent.com/bartuer/CAAPI_provision//master/mosh.sh | bash
+curl -o- https://raw.githubusercontent.com/bartuer/CAAPI_provision/master/mosh.sh | bash
 ```
 
 #### Disable SELinux
