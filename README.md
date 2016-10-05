@@ -37,17 +37,12 @@ Now you can connect to your machine use RSA public key
 ```shell
 ssh $machine_name
 ```
+BELOW STEP SHOULD BE DONE ON VM.
+
 Mosh can keep you connect to the VM, but it is optional.
 ```shell
-curl -o- https://raw.githubusercontent.com/bartuer/CAAPI_provision/master/mosh.sh | ssh $machine_name 'bash -s'
+curl -o- https://raw.githubusercontent.com/bartuer/CAAPI_provision//master/mosh.sh | bash
 ```
-
-usage like
-```shell
-mosh $machine_name
-```
-### Provision
-Below step should be done on VM.
 
 #### Disable SELinux
 Otherwise local folder sync between docker and host would have
