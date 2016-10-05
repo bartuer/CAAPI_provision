@@ -177,6 +177,30 @@
                     "priority": 1040,
                     "direction": "Inbound"
                 }
+            }, {
+                "name": "default-allow-mosh",
+                "properties": {
+                    "protocol": "UDP",
+                    "sourcePortRange": "*",
+                    "destinationPortRange": "60001",
+                    "sourceAddressPrefix": "*",
+                    "destinationAddressPrefix": "*",
+                    "access": "Allow",
+                    "priority": 1050,
+                    "direction": "Inbound"
+                }
+            }, {
+                "name": "default-allow-https",
+                "properties": {
+                    "protocol": "TCP",
+                    "sourcePortRange": "*",
+                    "destinationPortRange": "443",
+                    "sourceAddressPrefix": "*",
+                    "destinationAddressPrefix": "*",
+                    "access": "Allow",
+                    "priority": 1060,
+                    "direction": "Inbound"
+                }
             }]
         },
         "resources": [],
