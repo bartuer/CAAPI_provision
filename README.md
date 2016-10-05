@@ -13,6 +13,9 @@ parameters (total 5) before execute below command, it will take about 3 minutes
 to successfully create the VM. And never check in parameters.json,
 because you are check in credential data.
 
+More details about the VM image:
+[Microsoft linux data science VM](https://azure.microsoft.com/en-us/marketplace/partners/microsoft-ads/linux-data-science-vm/)
+
 ```shell
 ./deploy.sh
 ```
