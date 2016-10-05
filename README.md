@@ -114,7 +114,7 @@ curl -o- https://raw.githubusercontent.com/bartuer/CAAPI_files/master/minimal/cr
 
 Access base docker instance.
 ```shell
-cd /ml/vms/base && vagrant ssh
+cd /ml/vms/minimal && vagrant ssh
 ```
 
 After ssh into docker container, Change to root to avoid incompatible
