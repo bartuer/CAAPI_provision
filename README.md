@@ -103,16 +103,25 @@ field of output when configure ssh public key, check it at
 Now 2 Azure File Storage docker volume are created, datavol and
 codevol, we will mount them when create docker image.
 
-#### Base Image, with ssh setup and host volume mounted 
+#### Minimal Image, with ssh setup and host volume mounted 
 
 Check out https://github.com/bartuer/CAAPI_files/blob/master/README.md
 for volume mount details.
+
+We store docker images both on hub.docker.com and caapi blob storage,
+mapping like
+caapi/minimal:latest -> https://caapi.blob.core.windows.net/docker/minimal.latest.tar.gz
+
+Speed up image pull like, it is same as docker pull but faster when first time download.
+```
+curl https://caapi.blob.core.windows.net/docker/image/minimal.latest.tar.gz | gunzip | docker load
+```
 
 ```shell
 curl -o- https://raw.githubusercontent.com/bartuer/CAAPI_files/master/minimal/create.sh | bash
 ```
 
-Access base docker instance.
+Access minimal docker container.
 ```shell
 cd /ml/vms/minimal && vagrant ssh
 ```
