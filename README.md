@@ -79,7 +79,7 @@ docker run --rm hello-world
 A hello world docker container will show up, that means docker install success.
 
 On Windows and OSX platform, follow docker official instrument:
-(Get docker)[https://www.docker.com/products/overview]
+[https://www.docker.com/products/overview](https://www.docker.com/products/overview)
 
 #### Install Vagrant
 
@@ -108,7 +108,7 @@ codevol, we will mount them when create docker image.
 
 #### Minimal Image, with ssh setup and host volume mounted 
 
-Check out https://github.com/bartuer/CAAPI_files/blob/master/README.md
+Check out [https://github.com/bartuer/CAAPI_files/blob/master/README.md](https://github.com/bartuer/CAAPI_files/blob/master/README.md)
 for volume mount details.
 
 We store docker images both on hub.docker.com and caapi blob storage,
