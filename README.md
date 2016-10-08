@@ -112,14 +112,13 @@ Check out [https://github.com/bartuer/CAAPI_files/blob/master/README.md](https:/
 for volume mount details.
 
 We store docker images both on hub.docker.com and caapi blob storage,
-mapping like
-caapi/minimal:latest -> https://caapi.blob.core.windows.net/docker/minimal.latest.tar.gz
+Mapping caapi/minimal:latest to https://caapi.blob.core.windows.net/docker/minimal.latest.tar.gz
 
-Speed up image pull like, it is same as docker pull but faster when first time download.
+Speed up image pull as below, it is same as docker pull but faster when first time download.
 ```
 curl https://caapi.blob.core.windows.net/docker/image/minimal.latest.tar.gz | gunzip | docker load
 ```
-
+Notice vagrant will create another image based on docker pull/load image version.
 ```shell
 curl -o- https://raw.githubusercontent.com/bartuer/CAAPI_files/master/minimal/create.sh | bash
 ```
@@ -191,4 +190,11 @@ curl -o- https://raw.githubusercontent.com/bartuer/dot-emacs/master/install/linu
 Ubuntu/Debian APT package system:
 ```shell
 curl -o- https://raw.githubusercontent.com/bartuer/dot-emacs/master/install/linux_apt.sh | bash
+```
+Or docker way, on Windows:
+```shell
+docker pull caapi/emacs:base
+docker run --rm -p 2233:22 -v C:/Users:/ml caapi/emacs:base
+ssh -p 2233 vagrant@localhost
+ec
 ```
