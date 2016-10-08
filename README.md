@@ -95,23 +95,6 @@ For RMP system:
 ```shell
 curl -o- https://raw.githubusercontent.com/bartuer/CAAPI_provision/master/vagrant.yum.sh | bash
 ```
-#### Mount Azure File Storage to docker container
-
-Install driver for Azure File Storage docker volume.
-```shell
-curl -o- https://raw.githubusercontent.com/bartuer/CAAPI_provision/master/azurefile.sh | bash
-```
-
-Execute below command on local machine, not VM. $machine_name is host
-field of output when configure ssh public key, check it at
-~/.ssh/config.
-
-```shell
-./storagetoken.sh $machine_name
-```
-
-Now 2 Azure File Storage docker volume are created, datavol and
-codevol, we will mount them when create docker image.
 
 #### Minimal Image, with ssh setup and host volume mounted 
 
@@ -163,7 +146,7 @@ azure storage file download -a caapi857 -k --share code -p /file_rw /tmp
 cat /tmp/file_rw
 ```
 
-#### Tensor Flow Image
+#### Tensor Flow 
 
 ```shell
 curl -o- https://raw.githubusercontent.com/bartuer/CAAPI_files/master/tensorflow/create.sh | bash
@@ -175,7 +158,7 @@ Access tensor flow docker instance.
 cd /ml/vms/tensorflow && vagrant ssh
 ```
 
-#### Torch Image
+#### Torch Container
 
 ```shell
 curl -o- https://raw.githubusercontent.com/bartuer/CAAPI_files/master/torch/create.sh | bash
