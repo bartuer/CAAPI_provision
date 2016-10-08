@@ -4,8 +4,15 @@ Provision files for Azure data science virtual machine.
 
 ### Azure CLI tool and authentication setup
 
+#### Install Azure CLI
+[https://azure.microsoft.com/en-us/documentation/articles/xplat-cli-install/](https://azure.microsoft.com/en-us/documentation/articles/xplat-cli-install/)
+
+#### Auth
+After Azure CLI installed, unzip CAAPI_azure_login.zip, copy content
+in login file, it looks like
+
 ```shell
-azure login
+azure login --service-principal -u https://cafe.msra.cn/caapi/provision -p pass --tenant ...
 ```
 ### Create Azure Data Science VM
 Edit parameters.json before provision the template, fill all null 
