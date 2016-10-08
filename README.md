@@ -78,6 +78,9 @@ docker run --rm hello-world
 ```
 A hello world docker container will show up, that means docker install success.
 
+On Windows and OSX platform, follow docker official instrument:
+(Get docker)[https://www.docker.com/products/overview]
+
 #### Install Vagrant
 
 For RMP system:
