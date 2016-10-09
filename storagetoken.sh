@@ -1,6 +1,6 @@
 #!/bin/bash
 
-azure vm list >/dev/null 2>&1 || {
+azure vm list -g CAAPI >/dev/null 2>&1 || {
     echo "Should not run on machine without azure CLI actived, not run it on VM";
     exit 1;
 }
