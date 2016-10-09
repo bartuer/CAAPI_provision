@@ -7,7 +7,11 @@ var resource_group = "CAAPI";
 
 function get_storage_key(account) {
     var account_info = JSON.parse(exec(`azure storage account keys list -g ${resource_group} ${storage_account} --json`).toString());
-    return account_info.storageAccountKeys.key1;
+    if (account_info.storageAccountKeys) {
+        return account_info.storageAccountKeys.key1;
+    } else {
+        return account_info[0].value;
+    }
 }
 var storage_key = get_storage_key(storage_account);
 
