@@ -159,13 +159,15 @@ echo " Hello for docker" > file_rw
 
 On local machine, check via file service
 ```shell
-azure storage file download -a caapi857 -k --share code -p /file_rw /tmp 
-cat /tmp/file_rw
+azure storage file download -a caapi857 -k --share code -p /file /tmp 
+cat /tmp/file
 ```
 
 #### Tensor Flow 
 
+
 ```shell
+curl https://caapi.blob.core.windows.net/docker/image/tensorflow.latest.tar.gz | gunzip | docker load
 curl -o- https://raw.githubusercontent.com/bartuer/CAAPI_files/master/tensorflow/create.sh | bash
 ```
 
