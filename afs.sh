@@ -27,11 +27,19 @@ echo "start docker AFS driver"
 sudo systemctl daemon-reload
 sudo systemctl enable azurefile-dockervolumedriver
 sudo systemctl start azurefile-dockervolumedriver
+sudo systemctl status azurefile-dockervolumedriver -l
 
 echo "create docker volume"
+docker volume rm codevol
+docker volume rm datavol
 docker volume create -d  azurefile -o share=code --name=codevol
 docker volume create -d  azurefile -o share=data --name=datavol
+docker volume inspect codevol
+docker volume inspect datavol
 
 echo "mount AFS to host"
-curl -o- https://raw.githubusercontent.com/bartuer/CAAPI_provision/master/afs_mount.js | sudo node >> /etc/fstab
+cat /etc/fstab > /tmp/fstab
+curl -o- https://raw.githubusercontent.com/bartuer/CAAPI_provision/master/afs_mount.js | node >> /tmp/fstab
+cat /tmp/fstab
+# sudo cp /tmp/fstab /etc/fstab
 sudo mount -a
