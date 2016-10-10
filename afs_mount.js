@@ -27,4 +27,4 @@ password=${storage_key}`;
 fs.writeFileSync('/tmp/afspass', content);
 
 console.log(`//${account}.file.core.windows.net/data /ml/storage/data cifs vers=3.0,credentials=/afspass,dir_mode=0777,file_mode=0777`);
-console.log(`//${account}.file.core.windows.net/code /ml/storage/data cifs vers=3.0,credentials=/afspass,dir_mode=0777,file_mode=0777`);
+console.log(`//${account}.file.core.windows.net/code /ml/storage/code cifs vers=3.0,credentials=/afspass,dir_mode=0777,file_mode=0777`);
