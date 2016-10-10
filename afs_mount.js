@@ -21,7 +21,7 @@ var storage = {
 var storage_key = storage.get_key(storage.account);
 var account = storage.account;
 
-fs.write('/tmp/afspass', `username=${account}
+fs.open('/tmp/afspass').writeSync(`username=${account}
 password=${storage_key}`);
 
 console.log(`//${account}.file.core.windows.net/data /ml/storage/data cifs vers=3.0,credentials=/afspass,dir_mode=0777,file_mode=0777`);
