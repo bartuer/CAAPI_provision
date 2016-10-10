@@ -41,5 +41,6 @@ echo "mount AFS to host"
 cat /etc/fstab > /tmp/fstab
 curl -o- https://raw.githubusercontent.com/bartuer/CAAPI_provision/master/afs_mount.js | node >> /tmp/fstab
 cat /tmp/fstab
-# sudo cp /tmp/fstab /etc/fstab
+sudo cp /tmp/fstab /etc/fstab
+rm /tmp/fstab
 sudo mount -a
