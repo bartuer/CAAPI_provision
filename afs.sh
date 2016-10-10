@@ -44,7 +44,8 @@ cat /etc/fstab > /tmp/fstab
 curl -o- https://raw.githubusercontent.com/bartuer/CAAPI_provision/master/afs_mount.js | node >> /tmp/fstab
 cat /tmp/fstab
 sudo cp /tmp/fstab /etc/fstab
-rm /tmp/fstab
+rm -f /tmp/fstab
+rm -f /tmp/afspass
 sudo cp /tmp/afspass /
 sudo chmod g+w /afspass
 sudo mount -a
