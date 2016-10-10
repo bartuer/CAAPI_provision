@@ -69,7 +69,6 @@ disabled. Reboot may take 1~2 minutes.
 curl -o- https://raw.githubusercontent.com/bartuer/CAAPI_provision/master/disable_selinux.sh | bash
 ```
 
-
 #### Mount Azure File Storage to docker container
 
 ```shell
