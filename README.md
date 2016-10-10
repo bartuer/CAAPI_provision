@@ -72,21 +72,10 @@ curl -o- https://raw.githubusercontent.com/bartuer/CAAPI_provision/master/disabl
 
 #### Mount Azure File Storage to docker container
 
-Install driver for Azure File Storage docker volume.
 ```shell
-curl -o- https://raw.githubusercontent.com/bartuer/CAAPI_provision/master/azurefile.sh | bash
+azure login --service-principal -u https://cafe.msra.cn/caapi/provision -p pass --tenant 72f988bf-86f1-41af-91ab-2d7cd011db47
+curl -o- https://raw.githubusercontent.com/bartuer/CAAPI_provision/master/afs.sh | bash
 ```
-
-Execute below command on local machine, not VM. $machine_name is host
-field of output when configure ssh public key, check it at
-~/.ssh/config.
-
-```shell
-./storagetoken.sh $machine_name
-```
-
-Now 2 Azure File Storage docker volume are created, datavol and
-codevol, we will mount them when create docker image.
 
 #### Install Docker
 
