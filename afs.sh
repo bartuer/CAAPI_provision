@@ -30,6 +30,8 @@ sudo systemctl start azurefile-dockervolumedriver
 sudo systemctl status azurefile-dockervolumedriver -l
 
 echo "create docker volume"
+docker stop `(docker ps -a -q)`
+# rm volume in case it mount as wrong local driver
 docker volume rm codevol
 docker volume rm datavol
 docker volume create -d  azurefile -o share=code --name=codevol
