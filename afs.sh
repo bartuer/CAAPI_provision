@@ -45,4 +45,6 @@ curl -o- https://raw.githubusercontent.com/bartuer/CAAPI_provision/master/afs_mo
 cat /tmp/fstab
 sudo cp /tmp/fstab /etc/fstab
 rm /tmp/fstab
+sudo cp /tmp/afspass /
+sudo chmod g+w /afspass
 sudo mount -a
